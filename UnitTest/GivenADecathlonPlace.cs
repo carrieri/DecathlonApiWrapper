@@ -24,7 +24,8 @@ namespace UnitTest
                     .End()
                 .Fetch();
 
-            Assert.That(response, Is.True);
+            Assert.That(response, Is.Not.Null);
+            Assert.That(response.Count, Is.GreaterThan(0));
         }
         
     }

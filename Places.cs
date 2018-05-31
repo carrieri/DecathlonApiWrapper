@@ -1,5 +1,6 @@
 ﻿using DecathlonApiWrapper.Extensions;
 using DecathlonApiWrapper.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,17 +53,18 @@ namespace DecathlonApiWrapper
             return Parameters;
         }
 
-        public bool Fetch()
+        public List<Feature> Fetch()
         {
             var queryParams = string.Join("&", Parameters.Parameters.Select(x => x.Value));
             using (var webClient = new System.Net.WebClient())
             {
                 var responce = webClient.DownloadString($"{Url}?{queryParams}");
+                var collection = JsonConvert.DeserializeObject<FeatureCollection>(responce);
                 if (responce != null)
                 {
-                    return true;
+                    return collection.Features;
                 }
-                return false;
+                return null;
             }
         }
     }
