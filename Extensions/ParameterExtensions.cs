@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DecathlonApiWrapper.Models;
+using System.Collections.Generic;
 
 namespace DecathlonApiWrapper.Extensions
 {

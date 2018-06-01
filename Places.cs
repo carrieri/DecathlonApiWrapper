@@ -1,11 +1,9 @@
 ﻿using DecathlonApiWrapper.Extensions;
 using DecathlonApiWrapper.Models;
+using DecathlonApiWrapper.Models.ApiResponce;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DecathlonApiWrapper
 {
@@ -53,16 +51,20 @@ namespace DecathlonApiWrapper
             return Parameters;
         }
 
-        public List<Feature> Fetch()
+        public PagedData<Feature> Fetch()
         {
             var queryParams = string.Join("&", Parameters.Parameters.Select(x => x.Value));
             using (var webClient = new System.Net.WebClient())
             {
                 var responce = webClient.DownloadString($"{Url}?{queryParams}");
-                var collection = JsonConvert.DeserializeObject<FeatureCollection>(responce);
-                if (responce != null)
+                var collection = JsonConvert.DeserializeObject<ApiResponce>(responce);
+                if (collection?.Data != null)
                 {
-                    return collection.Features;
+                    return new PagedData<Feature>
+                    {
+                        Results = collection.Data.Features,
+                        NextPage = collection.Next
+                    };
                 }
                 return null;
             }
