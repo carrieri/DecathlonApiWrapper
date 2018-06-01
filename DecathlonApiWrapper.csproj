@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\PlacesParameters.cs" />
+    <Compile Include="Builder\PlacesParametersType.cs" />
     <Compile Include="Converters\ApiResponceConverter.cs" />
     <Compile Include="Converters\FeatureConverter.cs" />
     <Compile Include="Converters\Mapper.cs" />
@@ -59,8 +61,9 @@
     <Compile Include="Models\FeatureCollection.cs" />
     <Compile Include="Models\PagedData.cs" />
     <Compile Include="Models\Partner.cs" />
+    <Compile Include="Models\Tags.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Places.cs" />
+    <Compile Include="Builder\Places.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

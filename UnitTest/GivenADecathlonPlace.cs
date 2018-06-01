@@ -16,7 +16,7 @@ namespace UnitTest
             var decathlon = new Decathlon();
             var data = decathlon.SearchForPlaces()
                 .BuildRequest()
-                    .WithOrigin(new GeoCoordinate
+                    .Origin(new GeoCoordinate
                     {
                         Longitude = -73.582,
                         Latitude = 45.511
