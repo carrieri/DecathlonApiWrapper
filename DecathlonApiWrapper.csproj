@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +47,7 @@
     <Compile Include="Converters\FeatureConverter.cs" />
     <Compile Include="Converters\Mapper.cs" />
     <Compile Include="Decathlon.cs" />
+    <Compile Include="Extensions\GeoCoordinateExtensions.cs" />
     <Compile Include="Extensions\ParameterExtensions.cs" />
     <Compile Include="Models\ApiResponce\ApiResponce.cs" />
     <Compile Include="Models\Difficulty.cs" />

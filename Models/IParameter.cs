@@ -1,6 +1,6 @@
 ﻿namespace DecathlonApiWrapper.Models
 {
-    interface IParameter
+    internal interface IParameter
     {
         string AsString { get; }
     }
