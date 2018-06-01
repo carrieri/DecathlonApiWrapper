@@ -14,7 +14,7 @@ namespace UnitTest
         public void When_I_fetch_a_place_by_origin_Then_I_should_get_locations()
         {
             var decathlon = new Decathlon();
-            var response = decathlon.SearchForPlaces()
+            var data = decathlon.SearchForPlaces()
                 .BuildRequest()
                     .WithOrigin(new GeoLocation
                     {
@@ -24,8 +24,8 @@ namespace UnitTest
                     .End()
                 .Fetch();
 
-            Assert.That(response, Is.Not.Null);
-            Assert.That(response.Count, Is.GreaterThan(0));
+            Assert.That(data, Is.Not.Null);
+            Assert.That(data.Results.Count, Is.GreaterThan(0));
         }
         
     }
