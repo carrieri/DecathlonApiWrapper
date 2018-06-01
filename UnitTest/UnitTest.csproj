@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="GivenADecathlonPlace.cs" />
     <Compile Include="GivenAFeatureConverter.cs" />
+    <Compile Include="GivenAPagedConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
