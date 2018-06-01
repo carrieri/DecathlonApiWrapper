@@ -22,7 +22,7 @@ namespace DecathlonApiWrapper.Extensions
     {
         internal static IParameter ToParameter(this GeoCoordinate coords)
         {
-            var parameter = new Parameter<GeoCoordinate>(coords, (x) => $"{ x.Latitude },{ x.Longitude}");
+            var parameter = new Parameter<GeoCoordinate>(coords, (x) => $"{ x.Longitude },{ x.Latitude}");
             return parameter;
         }
     }

@@ -18,8 +18,8 @@ namespace UnitTest
                 .BuildRequest()
                     .WithOrigin(new GeoCoordinate
                     {
-                        Latitude = -73.582,
-                        Longitude = 45.511
+                        Longitude = -73.582,
+                        Latitude = 45.511
                     }, 10)
                     .End()
                 .Fetch();
