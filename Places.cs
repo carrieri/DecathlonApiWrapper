@@ -2,7 +2,9 @@
 using DecathlonApiWrapper.Models;
 using DecathlonApiWrapper.Models.ApiResponce;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 
 namespace DecathlonApiWrapper
@@ -10,7 +12,9 @@ namespace DecathlonApiWrapper
     internal enum PlacesParametersType
     {
         origin,
-        radius
+        radius,
+        sw,
+        ne
     }
 
     public class PlacesParameters
@@ -23,10 +27,31 @@ namespace DecathlonApiWrapper
 
         internal Dictionary<PlacesParametersType, string> Parameters { get; } = new Dictionary<PlacesParametersType, string>();
 
-        public PlacesParameters WithOrigin(GeoLocation origin, int radius)
+        public PlacesParameters WithOrigin(GeoCoordinate origin, int radius)
         {
-            Parameters.SetParameter(PlacesParametersType.origin, origin)
+            if(radius > 100)
+            {
+                throw new ArgumentOutOfRangeException(nameof(radius), radius, "maximum radius 100");
+            }
+
+            Parameters.SetParameter(PlacesParametersType.origin, origin.ToParameter())
                       .SetParameter(PlacesParametersType.radius, radius);
+
+            return this;
+        }
+
+        public PlacesParameters WithBoundingBox(GeoCoordinate sw, GeoCoordinate ne)
+        {
+            var distanceInMeters = sw.GetDistanceTo(ne);
+            var hundredKm = 100 * 1000; 
+            if (distanceInMeters > hundredKm)
+            {
+                throw new ArgumentOutOfRangeException($"{nameof(sw)},{nameof(ne)}", distanceInMeters, "maximum bounding box distance 100km");
+            }
+
+            Parameters.SetParameter(PlacesParametersType.sw, sw.ToParameter())
+                      .SetParameter(PlacesParametersType.ne, ne.ToParameter());
+
             return this;
         }
 

@@ -49,8 +49,8 @@ namespace UnitTest
             Assert.That(act.User.Staff, Is.True);
 
             Assert.That(obj.GeoLocation, Is.Not.Null);
-            Assert.That(obj.GeoLocation.Longitude, Is.EqualTo(45.5119864m));
-            Assert.That(obj.GeoLocation.Latitude, Is.EqualTo(-73.5826985m));
+            Assert.That(obj.GeoLocation.Latitude, Is.EqualTo(45.5119864));
+            Assert.That(obj.GeoLocation.Longitude, Is.EqualTo(-73.5826985));
 
             Assert.That(obj.User, Is.Not.Null);
             Assert.That(obj.User.Id, Is.EqualTo(0));

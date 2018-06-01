@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Device.Location;
 
 namespace DecathlonApiWrapper.Models
 {
@@ -14,7 +15,7 @@ namespace DecathlonApiWrapper.Models
         public ContactDetails ContactDetails { get; set; }
         public AddressComponent Address { get; set; }
         public List<Activity> Activities { get; set; }
-        public GeoLocation GeoLocation { get; set; }
+        public GeoCoordinate GeoLocation { get; set; }
         public User User { get; set; }
         public Partner Partner { get; set; }
         public DateTime? CreatedAt { get; set; }

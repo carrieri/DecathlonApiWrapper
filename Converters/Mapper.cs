@@ -1,5 +1,7 @@
 ﻿using DecathlonApiWrapper.Models;
+using System;
 using System.Collections.Generic;
+using System.Device.Location;
 
 namespace DecathlonApiWrapper.Converters
 {
@@ -43,13 +45,13 @@ namespace DecathlonApiWrapper.Converters
             return userInst;
         }
 
-        public static GeoLocation MapGeoLocation(dynamic location)
+        public static GeoCoordinate MapGeoLocation(dynamic location)
         {
             var point = location.ToObject<Point>();
-            var geoLocation = new GeoLocation
+            var geoLocation = new GeoCoordinate
             {
-                Longitude = point.coordinates[1],
-                Latitude = point.coordinates[0]
+                Longitude = Convert.ToDouble(point.coordinates[0]),
+                Latitude = Convert.ToDouble(point.coordinates[1])
             };
 
             return geoLocation;
