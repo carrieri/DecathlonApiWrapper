@@ -1,4 +1,6 @@
-﻿namespace DecathlonApiWrapper
+﻿using DecathlonApiWrapper.Builder;
+
+namespace DecathlonApiWrapper
 {
     public class Decathlon
     {
